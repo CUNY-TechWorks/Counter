@@ -15,14 +15,45 @@ class Counter extends Component {
   // ex this.increment = this.increment.bind(this);
   increment = () => {
      // setState comes with react; it's built-in already
+     let buttons = Array.from(document.getElementsByTagName("button"));
+     
      if(this.state.count < 20) {
-       this.setState({count: this.state.count + 1});
+       if(buttons[3].innerText === "Single Increment") {
+         this.setState({count: this.state.count + 1});
+       }
+       else {
+         if(this.state.count !== 19) {
+           this.setState({count: this.state.count + 2});
+         } 
+       }
      }
   }
   decrement = () => {
+    let buttons = Array.from(document.getElementsByTagName("button"));
+
      if(this.state.count > 0) {
-      this.setState({count: this.state.count - 1});
+       if(buttons[3].innerText === "Single Increment") {
+         this.setState({count: this.state.count - 1});
+       }
+       else {
+         if(this.state.count !== 1) {
+          this.setState({count: this.state.count - 2});
+         } 
+       }
      }
+  }
+  clear = () => {
+     this.setState({count: 0});
+  }
+  toggle = () => {
+    let buttons = Array.from(document.getElementsByTagName('button'));
+    
+    if(buttons[3].textContent === "Single Increment") {
+      buttons[3].textContent = "Double Increment";
+    }
+    else {
+      buttons[3].textContent = "Single Increment";
+    }
   }
 
   render() {
@@ -33,6 +64,8 @@ class Counter extends Component {
            <h1> {this.state.count} </h1>
            <button type="button" onClick={this.increment}> Increment </button>
            <button type="button" onClick={this.decrement}> Decrement </button>
+           <button type="button" onClick={this.clear}> Clear </button>
+           <button type="button" onClick={this.toggle}> Single Increment </button>
         </div>
       </div>
     );
