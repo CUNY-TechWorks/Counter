@@ -15,10 +15,14 @@ class Counter extends Component {
   // ex this.increment = this.increment.bind(this);
   increment = () => {
      // setState comes with react; it's built-in already
-     this.setState({count: this.state.count + 1});
+     if(this.state.count < 20) {
+       this.setState({count: this.state.count + 1});
+     }
   }
   decrement = () => {
-     this.setState({count: this.state.count - 1});
+     if(this.state.count > 0) {
+      this.setState({count: this.state.count - 1});
+     }
   }
 
   render() {
