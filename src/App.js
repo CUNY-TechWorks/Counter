@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class Counter extends Component {
+  constructor() {
+    super(); // needed when using the extends keyword
+    this.state = {
+      count: 0,
+    } 
+  }
+
+  render() {
+    return (
+      <div className="container"> 
+        <div className="navbar"> Counter.js </div>
+        <div className="Content">
+           <h1> {this.state.count} </h1>
+           <button type="button"> Increment </button>
+           <button type="button"> Decrement </button>
+        </div>
+      </div>
+    );
+  };
 }
 
-export default App;
+// to be used in other files
+export default Counter;
